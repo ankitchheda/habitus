@@ -690,8 +690,8 @@ func dumpDockerfile(node *parser.Node) string {
 	}
 
 	for _, n := range node.Children {
-		if n.Value == "cmd" {
-			//keep the old cmd
+		if n.Value == "cmd" || n.Value == "entrypoint" {
+			// keep the original cmd or entrypoint format
 			str += n.Original + "\n"
 		} else {
 			str += dumpDockerfile(n) + "\n"
